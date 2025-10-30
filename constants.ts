@@ -1,4 +1,3 @@
-
 import type { NavLink, Project } from './types';
 
 export const NAV_LINKS: NavLink[] = [
@@ -22,7 +21,7 @@ export const PROJECTS: Project[] = [
     title: 'Crypto Dashboard',
     description: 'A real-time cryptocurrency dashboard providing up-to-date prices, market caps, and historical data charts for various coins.',
     techStack: ['React', 'Chart.js', 'CoinGecko API'],
-    githubUrl: 'https://github.com/parikshit-chauhan',
+    githubUrl: 'https://github.com/kshit7897',
     liveUrl: '#',
     imageUrl: 'https://picsum.photos/seed/crypto/600/400',
   },
@@ -30,7 +29,7 @@ export const PROJECTS: Project[] = [
     title: 'Voot OTT App Clone',
     description: 'A clone of the Voot OTT platform, showcasing a dynamic grid of movies and TV shows with a focus on a clean, modern UI.',
     techStack: ['React', 'Redux', 'Styled Components'],
-    githubUrl: 'https://github.com/parikshit-chauhan',
+    githubUrl: 'https://github.com/kshit7897',
     liveUrl: '#',
     imageUrl: 'https://picsum.photos/seed/voot/600/400',
   },

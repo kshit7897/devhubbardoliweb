@@ -145,8 +145,8 @@ const Contact: React.FC<SectionProps> = ({ sectionRef }) => {
               <div className="mt-8">
                 <h4 className="text-lg font-semibold text-light-slate mb-4">Find me on</h4>
                 <div className="flex space-x-6">
-                  <a href="https://github.com/parikshit-chauhan" target="_blank" rel="noopener noreferrer" className="text-slate hover:text-neon-blue transition-all duration-300 transform hover:scale-110"><GitHubIcon className="w-7 h-7" /></a>
-                  <a href="https://www.linkedin.com/in/parikshit-chauhan-6101a0213/" target="_blank" rel="noopener noreferrer" className="text-slate hover:text-neon-blue transition-all duration-300 transform hover:scale-110"><LinkedInIcon className="w-7 h-7" /></a>
+                  <a href="https://github.com/kshit7897" target="_blank" rel="noopener noreferrer" className="text-slate hover:text-neon-blue transition-all duration-300 transform hover:scale-110"><GitHubIcon className="w-7 h-7" /></a>
+                  <a href="https://www.linkedin.com/in/parikshit-chauhan-245056242" target="_blank" rel="noopener noreferrer" className="text-slate hover:text-neon-blue transition-all duration-300 transform hover:scale-110"><LinkedInIcon className="w-7 h-7" /></a>
                   <a href="https://www.instagram.com/devhub.bardoli/" target="_blank" rel="noopener noreferrer" className="text-slate hover:text-neon-blue transition-all duration-300 transform hover:scale-110"><InstagramIcon className="w-7 h-7" /></a>
                 </div>
               </div>

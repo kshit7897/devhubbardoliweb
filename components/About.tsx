@@ -57,8 +57,8 @@ const About: React.FC<SectionProps> = ({ sectionRef }) => {
                 <div className="relative group">
                     <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-blue to-slate rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
                     <img 
-                        src="https://i.ibb.co/L5g11S1/IMG-20240417-195319.jpg" 
-                        alt="Parikshit Chauhan, Founder of DevHub Bardoli" 
+                        src="https://images.unsplash.com/photo-1618335829737-2228915674e0?q=80&w=1200&auto=format&fit=crop" 
+                        alt="Modern developer workspace with dark theme and neon lights" 
                         className="relative rounded-lg shadow-xl w-full h-auto object-cover"
                     />
                 </div>
@@ -76,10 +76,10 @@ const About: React.FC<SectionProps> = ({ sectionRef }) => {
                     Our mission is simple — to make every student’s project stand out with real developer-level quality and creativity.
                     </p>
                     <div className="flex justify-start space-x-6 pt-4">
-                        <a href="https://github.com/parikshit-chauhan" target="_blank" rel="noopener noreferrer" className="text-slate hover:text-neon-blue transition-all duration-300 transform hover:scale-110 inline-block">
+                        <a href="https://github.com/kshit7897" target="_blank" rel="noopener noreferrer" className="text-slate hover:text-neon-blue transition-all duration-300 transform hover:scale-110 inline-block">
                         <GitHubIcon className="w-8 h-8" />
                         </a>
-                        <a href="https://www.linkedin.com/in/parikshit-chauhan-6101a0213/" target="_blank" rel="noopener noreferrer" className="text-slate hover:text-neon-blue transition-all duration-300 transform hover:scale-110 inline-block">
+                        <a href="https://www.linkedin.com/in/parikshit-chauhan-245056242" target="_blank" rel="noopener noreferrer" className="text-slate hover:text-neon-blue transition-all duration-300 transform hover:scale-110 inline-block">
                         <LinkedInIcon className="w-8 h-8" />
                         </a>
                         <a href="https://www.instagram.com/devhub.bardoli/" target="_blank" rel="noopener noreferrer" className="text-slate hover:text-neon-blue transition-all duration-300 transform hover:scale-110 inline-block">
