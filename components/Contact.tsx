@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import { EnvelopeIcon, PaperAirplaneIcon, SpinnerIcon, WhatsAppIcon, GitHubIcon, LinkedInIcon, InstagramIcon } from './Icons';
 
-declare global {
-    interface Window {
-        emailjs: any;
-    }
-}
+// Moved FloatingLabelInput outside to prevent re-rendering on every keystroke, which fixes the focus loss issue.
+const FloatingLabelInput: React.FC<{ type: string; name: string; value: string; onChange: (e: React.ChangeEvent<HTMLInputElement>) => void; label: string; required?: boolean }> = ({ type, name, value, onChange, label, required }) => (
+  <div className="relative z-0 w-full mb-8 group">
+    <input type={type} name={name} id={name} value={value} onChange={onChange} className="block py-2.5 px-0 w-full text-sm text-light-slate bg-transparent border-0 border-b-2 border-dark-slate appearance-none focus:outline-none focus:ring-0 focus:border-neon-blue peer" placeholder=" " required={required} />
+    <label htmlFor={name} className="peer-focus:font-medium absolute text-sm text-slate duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-neon-blue peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+      {label} {required && <span className="text-syntax-pink">*</span>}
+    </label>
+  </div>
+);
 
 interface SectionProps {
   sectionRef: React.RefObject<HTMLElement>;
@@ -28,8 +32,8 @@ const Contact: React.FC<SectionProps> = ({ sectionRef }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus('Sending...');
     setIsLoading(true);
+    setStatus('');
 
     const { name, email, projectType, message } = formData;
 
@@ -38,42 +42,24 @@ const Contact: React.FC<SectionProps> = ({ sectionRef }) => {
       setIsLoading(false);
       return;
     }
-
-    const whatsappMessage = `New Project Inquiry from ${name}\nEmail: ${email}\nProject Type: ${projectType}\nMessage: ${message}`;
-    const whatsappUrl = `https://wa.me/918141547300?text=${encodeURIComponent(whatsappMessage)}`;
     
-    const serviceID = 'YOUR_SERVICE_ID'; // Replace with your Service ID
-    const templateID = 'YOUR_TEMPLATE_ID'; // Replace with your Template ID
+    // Construct the mailto link to open the user's default email client
+    const subject = `DevHub Project Inquiry from ${name}`;
+    const body = `Name: ${name}\nEmail: ${email}\nProject Type: ${projectType}\n\nMessage:\n${message}`;
+    
+    const mailtoLink = `mailto:devhubbardoli@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+    // Trigger the email client
+    window.location.href = mailtoLink;
+    
+    setStatus('Your email client has been opened. Please send the message.');
+    setFormData({ name: '', email: '', projectType: 'Minor Project', message: '' });
 
-    window.emailjs.send(serviceID, templateID, {
-      from_name: name,
-      from_email: email,
-      project_type: projectType,
-      message: message,
-      to_name: 'Parikshit Chauhan'
-    })
-      .then(() => {
-        setStatus('Message sent successfully! Opening WhatsApp...');
-        setFormData({ name: '', email: '', projectType: 'Minor Project', message: '' });
-        window.open(whatsappUrl, '_blank');
-      }, (err: any) => {
-        console.error('FAILED...', err);
-        setStatus('Failed to send email. Please try again or contact me directly.');
-      })
-      .finally(() => {
+    setTimeout(() => {
         setIsLoading(false);
-      });
+    }, 1000);
   };
   
-  const FloatingLabelInput: React.FC<{ type: string; name: string; value: string; onChange: (e: any) => void; label: string; required?: boolean }> = ({ type, name, value, onChange, label, required }) => (
-    <div className="relative z-0 w-full mb-8 group">
-      <input type={type} name={name} id={name} value={value} onChange={onChange} className="block py-2.5 px-0 w-full text-sm text-light-slate bg-transparent border-0 border-b-2 border-dark-slate appearance-none focus:outline-none focus:ring-0 focus:border-neon-blue peer" placeholder=" " required={required} />
-      <label htmlFor={name} className="peer-focus:font-medium absolute text-sm text-slate duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-neon-blue peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-        {label} {required && <span className="text-syntax-pink">*</span>}
-      </label>
-    </div>
-  );
-
   return (
     <section id="contact" ref={sectionRef} className="py-20 md:py-32 bg-transparent">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -113,7 +99,7 @@ const Contact: React.FC<SectionProps> = ({ sectionRef }) => {
                   {isLoading ? (
                     <>
                       <SpinnerIcon className="w-5 h-5" />
-                      Sending...
+                      Preparing...
                     </>
                   ) : (
                     <>
