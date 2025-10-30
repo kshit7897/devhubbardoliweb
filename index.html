@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DevHub Bardoli | Build • Code • Launch</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Poppins', 'sans-serif'],
+              mono: ['Fira Code', 'monospace'],
+            },
+            colors: {
+              'dark-navy': '#0D1117',
+              'dark-space': '#101820',
+              'neon-blue': '#61DAFB',
+              'light-slate': '#ccd6f6',
+              'slate': '#8892b0',
+              'dark-slate': '#495670',
+              'syntax-pink': '#FF79C6',
+              'syntax-green': '#50FA7B',
+              'syntax-orange': '#FFB86C',
+              'syntax-purple': '#BD93F9',
+              'syntax-comment': '#6272A4',
+            }
+          }
+        }
+      }
+    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+      (function() {
+        // IMPORTANT: Replace 'YOUR_PUBLIC_KEY' with your actual EmailJS Public Key.
+        // You can get this from your EmailJS account dashboard under 'Account' -> 'API Keys'.
+        emailjs.init({ publicKey: 'YOUR_PUBLIC_KEY' });
+      })();
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/"
+  }
+}
+</script>
+</head>
+  <body class="bg-dark-navy text-slate antialiased">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
