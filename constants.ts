@@ -1,3 +1,4 @@
+
 import type { NavLink, Project } from './types';
 
 export const NAV_LINKS: NavLink[] = [
@@ -10,35 +11,35 @@ export const NAV_LINKS: NavLink[] = [
 
 export const PROJECTS: Project[] = [
   {
-    title: 'Mamaearth Clone',
-    description: 'A responsive e-commerce front-end clone of the popular beauty brand Mamaearth, focusing on product display and user interaction.',
-    techStack: ['React', 'Tailwind CSS', 'React Router'],
-    githubUrl: 'https://github.com/parikshit-chauhan/mamaearth-clone',
-    liveUrl: 'https://mamaearth-clone-pc.netlify.app/',
-    imageUrl: 'https://picsum.photos/seed/mamaearth/600/400',
-  },
-  {
-    title: 'Crypto Dashboard',
-    description: 'A real-time cryptocurrency dashboard providing up-to-date prices, market caps, and historical data charts for various coins.',
-    techStack: ['React', 'Chart.js', 'CoinGecko API'],
+    title: 'EduTrack - Student Management',
+    description: 'A comprehensive platform for educational institutions to manage student data, track attendance, and monitor academic progress efficiently.',
+    techStack: ['React', 'Node.js', 'MongoDB', 'Tailwind CSS'],
     githubUrl: 'https://github.com/kshit7897',
-    liveUrl: '#',
-    imageUrl: 'https://picsum.photos/seed/crypto/600/400',
+    liveUrl: 'https://edutrack-three-sigma.vercel.app/',
+    imageUrl: 'https://images.unsplash.com/photo-1580894732444-8ec53925b39c?q=80&w=1740&auto=format&fit=crop',
   },
   {
-    title: 'Voot OTT App Clone',
-    description: 'A clone of the Voot OTT platform, showcasing a dynamic grid of movies and TV shows with a focus on a clean, modern UI.',
-    techStack: ['React', 'Redux', 'Styled Components'],
+    title: 'ShopZone - E-commerce Platform',
+    description: 'A modern, feature-rich e-commerce website with product catalogs, a shopping cart, and a seamless checkout experience.',
+    techStack: ['Next.js', 'Redux Toolkit', 'Stripe', 'Tailwind CSS'],
     githubUrl: 'https://github.com/kshit7897',
-    liveUrl: '#',
-    imageUrl: 'https://picsum.photos/seed/voot/600/400',
+    liveUrl: 'https://shop-zone-sable.vercel.app/',
+    imageUrl: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=1740&auto=format&fit=crop',
   },
   {
-    title: 'Portfolio Website',
-    description: 'A personal portfolio website to showcase my skills and projects, built with a mobile-first approach and smooth animations.',
-    techStack: ['Next.js', 'Tailwind CSS', 'Framer Motion'],
-    githubUrl: 'https://github.com/parikshit-chauhan/portfolio-v2',
-    liveUrl: 'https://parikshitchauhan.dev/',
-    imageUrl: 'https://picsum.photos/seed/portfolio/600/400',
+    title: 'CineSeat - Movie Ticket Booking',
+    description: 'A movie ticket booking application that allows users to browse movies, view showtimes, and book seats in their favorite theaters.',
+    techStack: ['React', 'Firebase', 'TMDB API', 'Styled Components'],
+    githubUrl: 'https://github.com/kshit7897',
+    liveUrl: 'https://cinesite-chi.vercel.app/',
+    imageUrl: 'https://images.unsplash.com/photo-1620177088257-c8b6a1b322a3?q=80&w=1887&auto=format&fit=crop',
+  },
+  {
+    title: 'MindSpace - Meditation & Wellness',
+    description: 'A wellness application designed to help users relax and meditate with guided sessions, calming sounds, and progress tracking.',
+    techStack: ['React', 'Framer Motion', 'Tailwind CSS', 'Node.js'],
+    githubUrl: 'https://github.com/kshit7897',
+    liveUrl: 'https://mindspace-pearl.vercel.app/',
+    imageUrl: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1820&auto=format&fit=crop',
   },
 ];
