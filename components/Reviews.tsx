@@ -13,6 +13,8 @@ const Reviews: React.FC<SectionProps> = ({ sectionRef }) => {
   // The type `NodeJS.Timeout` is for Node.js environments and is not available here.
   const intervalRef = useRef<number | null>(null);
   const [isHovered, setIsHovered] = useState(false);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [pageCount, setPageCount] = useState(1);
 
   const scroll = (direction: 'left' | 'right') => {
     if (sliderRef.current) {
@@ -49,6 +51,47 @@ const Reviews: React.FC<SectionProps> = ({ sectionRef }) => {
     }
     return () => stopAutoScroll();
   }, [isHovered, startAutoScroll]);
+
+  // Update page count and current page based on slider size / scroll
+  useEffect(() => {
+    const el = sliderRef.current;
+    if (!el) return;
+
+    const recompute = () => {
+      const pageW = el.clientWidth || 1;
+      const count = Math.max(1, Math.ceil(el.scrollWidth / pageW));
+      setPageCount(count);
+      const current = Math.round(el.scrollLeft / pageW);
+      setCurrentPage(Math.min(count - 1, Math.max(0, current)));
+    };
+
+    // initial compute
+    recompute();
+
+    const onScroll = () => {
+      const pageW = el.clientWidth || 1;
+      const current = Math.round(el.scrollLeft / pageW);
+      setCurrentPage(Math.min(Math.max(0, current), Math.max(0, Math.ceil(el.scrollWidth / pageW) - 1)));
+    };
+
+    const onResize = () => recompute();
+
+    el.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onResize);
+
+    return () => {
+      el.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onResize);
+    };
+  }, [sliderRef.current]);
+
+  const goToPage = (index: number) => {
+    const el = sliderRef.current;
+    if (!el) return;
+    const pageW = el.clientWidth || 1;
+    el.scrollTo({ left: index * pageW, behavior: 'smooth' });
+    setCurrentPage(index);
+  };
   
   return (
     <section id="reviews" ref={sectionRef} className="py-20 md:py-32 bg-transparent">
@@ -98,6 +141,18 @@ const Reviews: React.FC<SectionProps> = ({ sectionRef }) => {
           >
             <ChevronRightIcon className="w-6 h-6" />
           </button>
+        </div>
+        {/* Dots / Indicators */}
+        <div className="mt-6 flex justify-center items-center gap-3">
+          {Array.from({ length: pageCount }).map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goToPage(i)}
+              aria-label={`Go to testimonials page ${i + 1} of ${pageCount}`}
+              aria-current={currentPage === i}
+              className={`w-3 h-3 rounded-full transition-all duration-300 focus:outline-none ${currentPage === i ? 'bg-neon-blue scale-125' : 'bg-dark-slate/40 hover:bg-neon-blue/60'}`}
+            />
+          ))}
         </div>
       </div>
       <style>{`.hide-scrollbar::-webkit-scrollbar { display: none; } .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }`}</style>
