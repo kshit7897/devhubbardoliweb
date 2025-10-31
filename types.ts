@@ -1,4 +1,3 @@
-
 import type { ReactNode } from 'react';
 
 export interface NavLink {
@@ -21,4 +20,10 @@ export interface Project {
   githubUrl: string;
   liveUrl: string;
   imageUrl: string;
+}
+
+export interface Review {
+  name: string;
+  source: string;
+  quote: string;
 }
