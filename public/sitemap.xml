@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Sitemap for DevHub Bardoli
+  Sitemap for DevHub Bardoli (served from /public so it's available at the site root)
   - Includes homepage and main section anchors for the single-page app
   - Update lastmod when you deploy new changes
-  - Place this file at the site root so it's available at https://devhubbardoli.vercel.app/sitemap.xml
 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
