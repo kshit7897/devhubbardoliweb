@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { GitHubIcon, LinkedInIcon, InstagramIcon, CodeIcon, TargetIcon } from './Icons';
+import profileImg from '../assets/images/profile1.jpeg';
 
 interface SectionProps {
   sectionRef: React.RefObject<HTMLElement>;
@@ -56,11 +57,11 @@ const About: React.FC<SectionProps> = ({ sectionRef }) => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div className="relative group">
                     <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-blue to-slate rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
-                    <img 
-                        src="https://images.unsplash.com/photo-1557862921-37829c790f19?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3" 
-                        alt="Parikshit Chauhan, founder of DevHub Bardoli" 
-                        className="relative rounded-lg shadow-xl w-full h-auto object-cover"
-                    />
+          <img
+            src={profileImg}
+            alt="Parikshit Chauhan, founder of DevHub Bardoli"
+            className="relative rounded-lg shadow-xl w-full h-auto object-cover"
+          />
                 </div>
                 <div className="space-y-6 text-lg text-slate text-left">
                     <div>
