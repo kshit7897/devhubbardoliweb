@@ -1,5 +1,9 @@
 
 import type { NavLink, Project } from './types';
+import edutrackImg from './assets/images/edutrack.png';
+import shopzoneImg from './assets/images/shopzone.png';
+import cineseatImg from './assets/images/cineseat.png';
+import mindspaceImg from './assets/images/mindspace.png';
 
 export const NAV_LINKS: NavLink[] = [
   { id: 'home', title: 'Home' },
@@ -16,7 +20,7 @@ export const PROJECTS: Project[] = [
     techStack: ['React', 'Node.js', 'MongoDB', 'Tailwind CSS'],
     githubUrl: 'https://github.com/kshit7897',
     liveUrl: 'https://edutrack-three-sigma.vercel.app/',
-    imageUrl: 'https://images.unsplash.com/photo-1580894732444-8ec53925b39c?q=80&w=1740&auto=format&fit=crop',
+  imageUrl: edutrackImg,
   },
   {
     title: 'ShopZone - E-commerce Platform',
@@ -24,7 +28,7 @@ export const PROJECTS: Project[] = [
     techStack: ['Next.js', 'Redux Toolkit', 'Stripe', 'Tailwind CSS'],
     githubUrl: 'https://github.com/kshit7897',
     liveUrl: 'https://shop-zone-sable.vercel.app/',
-    imageUrl: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=1740&auto=format&fit=crop',
+  imageUrl: shopzoneImg,
   },
   {
     title: 'CineSeat - Movie Ticket Booking',
@@ -32,7 +36,7 @@ export const PROJECTS: Project[] = [
     techStack: ['React', 'Firebase', 'TMDB API', 'Styled Components'],
     githubUrl: 'https://github.com/kshit7897',
     liveUrl: 'https://cinesite-chi.vercel.app/',
-    imageUrl: 'https://images.unsplash.com/photo-1620177088257-c8b6a1b322a3?q=80&w=1887&auto=format&fit=crop',
+  imageUrl: cineseatImg,
   },
   {
     title: 'MindSpace - Meditation & Wellness',
@@ -40,6 +44,6 @@ export const PROJECTS: Project[] = [
     techStack: ['React', 'Framer Motion', 'Tailwind CSS', 'Node.js'],
     githubUrl: 'https://github.com/kshit7897',
     liveUrl: 'https://mindspace-pearl.vercel.app/',
-    imageUrl: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1820&auto=format&fit=crop',
+  imageUrl: mindspaceImg,
   },
 ];

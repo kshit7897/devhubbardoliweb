@@ -32,13 +32,16 @@ const Projects: React.FC<SectionProps> = ({ sectionRef }) => {
                   ))}
                 </div>
                 <div className="flex items-center space-x-4 mt-auto">
-                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="text-slate hover:text-neon-blue transition-colors duration-300">
+                  {/* <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="text-slate hover:text-neon-blue transition-colors duration-300" aria-label={`Open ${project.title} GitHub`}>
                     <GitHubIcon className="w-6 h-6" />
-                  </a>
+                  </a> */}
                   {project.liveUrl !== '#' && (
-                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="text-slate hover:text-neon-blue transition-colors duration-300">
-                      <ExternalLinkIcon className="w-6 h-6" />
-                    </a>
+                    <>
+                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="text-neon-blue hover:underline text-sm font-medium" aria-label={`Open ${project.title} live site`}>Hosted Link</a>
+                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="text-slate hover:text-neon-blue transition-colors duration-300" aria-label={`Open ${project.title} live site`}>
+                        <ExternalLinkIcon className="w-6 h-6" />
+                      </a>
+                    </>
                   )}
                 </div>
               </div>

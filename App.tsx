@@ -19,7 +19,7 @@ const App: React.FC = () => {
           acc[link.id] = React.createRef<HTMLElement>();
           return acc;
         },
-        {}
+        {} as { [key: string]: React.RefObject<HTMLElement> }
       ),
     []
   );
@@ -41,15 +41,17 @@ const App: React.FC = () => {
     );
 
     Object.values(sectionRefs).forEach((ref) => {
-      if (ref.current) {
-        observer.observe(ref.current);
+      const r = ref as React.RefObject<HTMLElement>;
+      if (r.current) {
+        observer.observe(r.current);
       }
     });
 
     return () => {
       Object.values(sectionRefs).forEach((ref) => {
-        if (ref.current) {
-          observer.unobserve(ref.current);
+        const r = ref as React.RefObject<HTMLElement>;
+        if (r.current) {
+          observer.unobserve(r.current);
         }
       });
     };
