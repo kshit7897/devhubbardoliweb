@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { PROJECTS } from '../constants';
 import { GitHubIcon, ExternalLinkIcon } from './Icons';
@@ -16,35 +17,42 @@ const Projects: React.FC<SectionProps> = ({ sectionRef }) => {
         </h2>
         <div className="w-20 h-1 bg-neon-blue mx-auto mb-12 rounded"></div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {PROJECTS.map((project: Project, index: number) => (
-            <div key={index} className="group relative flex flex-col bg-dark-slate rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-neon-blue/20 transform hover:-translate-y-2">
-              <div className="relative h-56 w-full overflow-hidden">
-                <img src={project.imageUrl} alt={project.title} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"/>
-                <div className="absolute inset-0 bg-dark-navy/50"></div>
-              </div>
-              <div className="p-6 flex flex-col flex-grow">
-                <h3 className="text-xl font-bold text-neon-blue mb-2">{project.title}</h3>
-                <p className="text-slate text-sm mb-4 flex-grow">{project.description}</p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.techStack.map((tech, i) => (
-                    <span key={i} className="bg-dark-navy text-neon-blue text-xs font-semibold px-2 py-1 rounded-full">{tech}</span>
-                  ))}
-                </div>
-                <div className="flex items-center space-x-4 mt-auto">
-                  {/* <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="text-slate hover:text-neon-blue transition-colors duration-300" aria-label={`Open ${project.title} GitHub`}>
+            <div 
+              key={index} 
+              className="group flex flex-col bg-slate-800/80 backdrop-blur-sm rounded-lg shadow-lg p-6 border border-slate-700 transition-all duration-300 transform hover:scale-[1.03] hover:border-neon-blue/50 hover:shadow-neon-blue/10"
+            >
+              <div className="flex-grow">
+                <header className="flex justify-between items-start mb-4">
+                  <h3 className="text-xl font-bold text-light-slate group-hover:text-neon-blue transition-colors duration-300 pr-4">{project.title}</h3>
+                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="text-slate hover:text-neon-blue transition-colors duration-300 flex-shrink-0" aria-label="GitHub repository">
                     <GitHubIcon className="w-6 h-6" />
-                  </a> */}
-                  {project.liveUrl !== '#' && (
-                    <>
-                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="text-neon-blue hover:underline text-sm font-medium" aria-label={`Open ${project.title} live site`}>Hosted Link</a>
-                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="text-slate hover:text-neon-blue transition-colors duration-300" aria-label={`Open ${project.title} live site`}>
-                        <ExternalLinkIcon className="w-6 h-6" />
-                      </a>
-                    </>
-                  )}
-                </div>
+                  </a>
+                </header>
+                
+                <p className="text-slate text-sm mb-4 leading-relaxed">{project.description}</p>
               </div>
+              
+              <footer className="mt-auto pt-4 border-t border-slate-700/50">
+                  <div className="flex flex-wrap gap-2 mb-6">
+                  {project.techStack.map((tech, i) => (
+                      <span key={i} className="bg-dark-navy text-neon-blue text-xs font-semibold px-3 py-1 rounded-full">{tech}</span>
+                  ))}
+                  </div>
+
+                  {project.liveUrl !== '#' && (
+                  <a 
+                      href={project.liveUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="inline-flex items-center justify-center w-full gap-2 px-4 py-2 bg-slate-700/50 text-slate font-semibold rounded-lg hover:bg-neon-blue/10 hover:text-neon-blue border border-slate-700 hover:border-neon-blue/50 transition-all duration-300"
+                  >
+                      <ExternalLinkIcon className="w-5 h-5" />
+                      View Live
+                  </a>
+                  )}
+              </footer>
             </div>
           ))}
         </div>
