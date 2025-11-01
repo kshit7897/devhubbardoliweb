@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://devhubbardoli.vercel.app/sitemap.xml
+# Crawl-delay not set; let search engines crawl freely. Adjust if you have rate limits.

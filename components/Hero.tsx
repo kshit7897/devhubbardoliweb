@@ -46,7 +46,13 @@ const Typewriter: React.FC<{ words: string[] }> = ({ words }) => {
 
 
 const Hero: React.FC<SectionProps> = ({ sectionRef }) => {
-  const wordsToAnimate = useMemo(() => ["Frontend Projects", "Full Stack Apps", "DevHub Bardoli"], []);
+  const wordsToAnimate = useMemo(() => [
+    "Project Ideas",
+    "School & College Projects",
+    "Website & App Ideas",
+    "Frontend Projects",
+    "DevHub Bardoli",
+  ], []);
 
   return (
     <section
