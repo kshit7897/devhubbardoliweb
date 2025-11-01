@@ -133,7 +133,7 @@ const Contact: React.FC<SectionProps> = ({ sectionRef }) => {
                 <div className="flex space-x-6">
                   <a href="https://github.com/kshit7897" target="_blank" rel="noopener noreferrer" className="text-slate hover:text-neon-blue transition-all duration-300 transform hover:scale-110"><GitHubIcon className="w-7 h-7" /></a>
                   <a href="https://www.linkedin.com/in/parikshit-chauhan-245056242" target="_blank" rel="noopener noreferrer" className="text-slate hover:text-neon-blue transition-all duration-300 transform hover:scale-110"><LinkedInIcon className="w-7 h-7" /></a>
-                  <a href="https://www.instagram.com/devhub.bardoli/" target="_blank" rel="noopener noreferrer" className="text-slate hover:text-neon-blue transition-all duration-300 transform hover:scale-110"><InstagramIcon className="w-7 h-7" /></a>
+                  <a href="https://www.instagram.com/devhubbardoli?utm_source=qr&igsh=MWdkNGN1dGtwb3hqeg==" target="_blank" rel="noopener noreferrer" className="text-slate hover:text-neon-blue transition-all duration-300 transform hover:scale-110"><InstagramIcon className="w-7 h-7" /></a>
                 </div>
               </div>
             </div>

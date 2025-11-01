@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
             <a href="https://www.linkedin.com/in/parikshit-chauhan-245056242" target="_blank" rel="noopener noreferrer" className="text-slate hover:text-neon-blue transition-all duration-300 transform hover:scale-110 inline-block">
               <LinkedInIcon className="w-6 h-6" />
             </a>
-            <a href="https://www.instagram.com/devhub.bardoli/" target="_blank" rel="noopener noreferrer" className="text-slate hover:text-neon-blue transition-all duration-300 transform hover:scale-110 inline-block">
+            <a href="https://www.instagram.com/devhubbardoli?utm_source=qr&igsh=MWdkNGN1dGtwb3hqeg==" target="_blank" rel="noopener noreferrer" className="text-slate hover:text-neon-blue transition-all duration-300 transform hover:scale-110 inline-block">
               <InstagramIcon className="w-6 h-6" />
             </a>
           </div>
