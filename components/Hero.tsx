@@ -47,10 +47,10 @@ const Typewriter: React.FC<{ words: string[] }> = ({ words }) => {
 
 const Hero: React.FC<SectionProps> = ({ sectionRef }) => {
   const wordsToAnimate = useMemo(() => [
-    "Project Ideas",
-    "School & College Projects",
-    "Website & App Ideas",
-    "Frontend Projects",
+    "Business Websites",
+    "Web Apps & Dashboards",
+    "Startups & MVPs",
+    "Custom Web Development",
     "DevHub Bardoli",
   ], []);
 
@@ -73,14 +73,14 @@ const Hero: React.FC<SectionProps> = ({ sectionRef }) => {
           </span>
         </h1>
         <p className="text-base sm:text-lg md:text-xl text-slate max-w-3xl mx-auto mb-8">
-          Helping Students Create Frontend & Full Stack Projects
+          Building websites, web apps and dashboards for businesses, startups and students.
         </p>
         <div className="flex justify-center gap-4 flex-wrap">
           <a
             href="#contact"
             className="px-8 py-3 bg-neon-blue text-dark-navy font-semibold rounded-lg shadow-lg shadow-neon-blue/20 hover:bg-opacity-80 transition-all duration-300 transform hover:scale-105"
           >
-            Get Your Project
+            Start a Project
           </a>
           <a
             href="#projects"

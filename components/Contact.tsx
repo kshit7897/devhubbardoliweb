@@ -19,7 +19,7 @@ const Contact: React.FC<SectionProps> = ({ sectionRef }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    projectType: 'Minor Project',
+    projectType: 'Websites & Landing Pages',
     message: '',
   });
   const [status, setStatus] = useState('');
@@ -66,7 +66,8 @@ const Contact: React.FC<SectionProps> = ({ sectionRef }) => {
         <h2 className="text-3xl md:text-4xl font-bold text-center text-light-slate mb-4">
           Get In Touch
         </h2>
-        <div className="w-20 h-1 bg-neon-blue mx-auto mb-12 rounded"></div>
+  <div className="w-20 h-1 bg-neon-blue mx-auto mb-6 rounded"></div>
+  <p className="text-center text-slate max-w-2xl mx-auto mb-8">Tell me about your website, web app, or MVP — I’ll reply with a quote and next steps for businesses, startups, and students.</p>
         
         <div className="max-w-4xl mx-auto bg-dark-navy/30 rounded-lg shadow-lg p-8 md:p-12 border border-dark-slate">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -77,12 +78,12 @@ const Contact: React.FC<SectionProps> = ({ sectionRef }) => {
               <FloatingLabelInput type="email" name="email" label="Email" value={formData.email} onChange={handleChange} required />
               
               <div className="relative z-0 w-full mb-8 group">
-                <label htmlFor="projectType" className="text-sm text-slate">Project Type</label>
+                <label htmlFor="projectType" className="text-sm text-slate">Service</label>
                 <select name="projectType" id="projectType" value={formData.projectType} onChange={handleChange} className="w-full mt-1 bg-dark-slate border border-slate/50 text-light-slate rounded-md p-3 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-navy focus:ring-neon-blue">
-                  <option>Minor Project</option>
-                  <option>Major Project</option>
-                  <option>Full Stack Website</option>
-                  <option>Documentation / Report</option>
+                  <option>Websites & Landing Pages</option>
+                  <option>Web Apps & Dashboards</option>
+                  <option>Startup MVP</option>
+                  <option>Documentation & Support</option>
                   <option>Other</option>
                 </select>
               </div>
@@ -104,7 +105,7 @@ const Contact: React.FC<SectionProps> = ({ sectionRef }) => {
                   ) : (
                     <>
                       <PaperAirplaneIcon className="w-5 h-5" />
-                      Send Message
+                      Request Quote
                     </>
                   )}
                 </button>
@@ -116,7 +117,7 @@ const Contact: React.FC<SectionProps> = ({ sectionRef }) => {
             <div className="flex flex-col justify-center">
               <h3 className="text-2xl font-bold text-light-slate mb-4">Contact Information</h3>
               <p className="text-slate mb-6">
-                Have a question or want to work together? Feel free to reach out via email, WhatsApp, or connect with me on social media.
+                Need a website, web app or support for your project? Reach out for a quote, timeline, or a quick consultation — available for businesses, startups and students.
               </p>
               <ul className="space-y-4 text-slate">
                 <li className="flex items-center gap-4">
