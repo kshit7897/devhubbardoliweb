@@ -66,13 +66,13 @@ const About: React.FC<SectionProps> = ({ sectionRef }) => {
                 <div className="space-y-6 text-lg text-slate text-left">
                     <div>
                         <p>
-                        DevHub Bardoli was founded by <span className="font-medium text-syntax-orange">Parikshit Chauhan</span>, a passionate frontend developer who wanted to make real-world web projects accessible for students.
+                        DevHub Bardoli was founded by <span className="font-medium text-syntax-orange">Parikshit Chauhan</span>, a full-stack developer building fast, maintainable websites, web apps, and dashboards for businesses, startups, and students.
                         </p>
                         <p>
-                        We help BCA, MCA, Diploma, and Engineering students create high-quality, customized projects — from idea to deployment.
+                        We deliver custom digital products — idea, design, backend, deployment and support — helping local businesses reach customers, startups launch MVPs, and students build production-ready projects.
                         </p>
-                         <p>
-                        Our mission is simple — to make every student’s project stand out with real developer-level quality and creativity.
+                        <p>
+                        Our mission: make professional web development and practical digital tools accessible across Bardoli.
                         </p>
                     </div>
 
@@ -82,9 +82,12 @@ const About: React.FC<SectionProps> = ({ sectionRef }) => {
                             <TargetIcon className="w-7 h-7 text-neon-blue" />
                             <h3 className="text-2xl font-bold text-light-slate">My Vision</h3>
                         </div>
-                        <p className="text-slate">
-                            My vision is to bridge the gap between academic learning and real-world development. I want to empower every student in Bardoli to build projects they are proud of—projects that are not just for grades, but for their future careers.
-                        </p>
+            <p className="text-slate">
+              My vision is to bridge academic learning and local business needs by enabling practical digital innovation across Bardoli.
+            </p>
+            <p className="text-slate">
+              I build reliable web products that improve visibility, customer reach, and operations — empowering individuals and businesses to go online with confidence.
+            </p>
                     </div>
 
                     <div className="flex justify-start space-x-6 pt-2">
