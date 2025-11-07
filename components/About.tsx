@@ -66,10 +66,13 @@ const About: React.FC<SectionProps> = ({ sectionRef }) => {
                 <div className="space-y-6 text-lg text-slate text-left">
                     <div>
                         <p>
-                        DevHub Bardoli was founded by <span className="font-medium text-syntax-orange">Parikshit Chauhan</span>, a full-stack developer building fast, maintainable websites, web apps, and dashboards for businesses, startups, and students.
+                        DevHub Bardoli was founded by <span className="font-medium text-syntax-orange">Parikshit Chauhan</span>, a full-stack developer building fast, maintainable websites, web apps, and dashboards for small and local businesses.
                         </p>
                         <p>
-                        We deliver custom digital products — idea, design, backend, deployment and support — helping local businesses reach customers, startups launch MVPs, and students build production-ready projects.
+                        We deliver end-to-end digital products — strategy, design, development, integrations and production deployment — focused on helping local businesses increase visibility, capture leads and automate operations.
+                        </p>
+                        <p>
+                        Common projects include: e-commerce websites for local stores, admin dashboards and analytics for SMBs, booking and reservation systems, and custom integrations with payment gateways and CRMs.
                         </p>
                         <p>
                         Our mission: make professional web development and practical digital tools accessible across Bardoli.

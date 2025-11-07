@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0" stop-color="#061331"/>
+      <stop offset="1" stop-color="#021022"/>
+    </linearGradient>
+    <style>
+      .title { fill: #e6eefc; font-family: Poppins, system-ui, -apple-system, sans-serif; font-weight:700; font-size:48px }
+      .sub { fill: #9fb0c8; font-family: Poppins, system-ui, -apple-system, sans-serif; font-size:28px }
+    </style>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#g)" />
+  <!-- left column: circular profile -->
+  <g transform="translate(80,85)">
+    <circle cx="0" cy="0" r="140" fill="#ffffff22" />
+  <!-- Use a relative path so local previews (VS Code) can resolve the image correctly -->
+  <image href="profile1.jpeg" x="-120" y="-120" width="240" height="240" preserveAspectRatio="xMidYMid slice" />
+  </g>
+  <!-- right column: text -->
+  <g transform="translate(340,160)">
+    <text class="title">DevHub Bardoli</text>
+    <text x="0" y="70" class="sub">Websites, Web Apps & Dashboards</text>
+    <text x="0" y="110" class="sub">Professional development for small businesses</text>
+  </g>
+  <!-- subtle accent -->
+  <rect x="340" y="140" width="760" height="1" fill="#1fb6ff33" />
+</svg>
