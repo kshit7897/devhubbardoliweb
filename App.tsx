@@ -7,6 +7,7 @@ import Services from './components/Services';
 import Projects from './components/Projects';
 import Reviews from './components/Reviews';
 import Contact from './components/Contact';
+import ThankYou from './components/ThankYou';
 import Footer from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 import { NAV_LINKS } from './constants';
@@ -95,6 +96,26 @@ const App: React.FC = () => {
       document.removeEventListener('click', handleAnchorClick);
     };
   }, []);
+
+  // Manage a simple client-side path so we can render a dedicated /thank-you page
+  const [pathname, setPathname] = React.useState<string>(typeof window !== 'undefined' ? window.location.pathname : '/');
+
+  React.useEffect(() => {
+    const onPop = () => setPathname(window.location.pathname);
+    window.addEventListener('popstate', onPop);
+    return () => window.removeEventListener('popstate', onPop);
+  }, []);
+
+  // If the user navigates to /thank-you, render the ThankYou component as a full page.
+  if (pathname === '/thank-you') {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-dark-navy to-dark-space">
+        <Header activeSection={activeSection} />
+        <ThankYou />
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-b from-dark-navy to-dark-space">

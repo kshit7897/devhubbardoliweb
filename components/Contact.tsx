@@ -24,6 +24,7 @@ const Contact: React.FC<SectionProps> = ({ sectionRef }) => {
   });
   const [status, setStatus] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const formRef = React.useRef<HTMLFormElement | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -35,29 +36,55 @@ const Contact: React.FC<SectionProps> = ({ sectionRef }) => {
     setIsLoading(true);
     setStatus('');
 
-    const { name, email, projectType, message } = formData;
+    const { name, email, message } = formData;
 
     if (!name || !email || !message) {
       setStatus('Please fill in all required fields.');
       setIsLoading(false);
       return;
     }
-    
-    // Construct the mailto link to open the user's default email client
-    const subject = `DevHub Project Inquiry from ${name}`;
-    const body = `Name: ${name}\nEmail: ${email}\nProject Type: ${projectType}\n\nMessage:\n${message}`;
-    
-    const mailtoLink = `mailto:devhubbardoli@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    
-    // Trigger the email client
-    window.location.href = mailtoLink;
-    
-    setStatus('Your email client has been opened. Please send the message.');
-    setFormData({ name: '', email: '', projectType: 'Minor Project', message: '' });
 
-    setTimeout(() => {
+    // Submit the form via FormSubmit's AJAX endpoint to avoid a full-page reload.
+    // This lets us stay in the SPA and navigate client-side to /thank-you.
+    const endpoint = 'https://formsubmit.co/ajax/devhubbardoli@gmail.com';
+
+    const fd = new FormData();
+    fd.append('name', formData.name);
+    fd.append('email', formData.email);
+    fd.append('projectType', formData.projectType);
+    fd.append('message', formData.message);
+    fd.append('_subject', 'New message from DevHub website');
+    fd.append('_replyto', formData.email);
+    fd.append('_template', 'table');
+    fd.append('_captcha', 'false');
+    fd.append('_honey', '');
+
+    fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+      },
+      body: fd,
+    })
+      .then(async (res) => {
+        if (!res.ok) throw new Error('Network response was not ok');
+        const json = await res.json();
+        if (json && json.success) {
+          // Clear form and navigate client-side to /thank-you without reload
+          setFormData({ name: '', email: '', projectType: 'Websites & Landing Pages', message: '' });
+          setIsLoading(false);
+          // push state and trigger popstate so App updates
+          window.history.pushState({}, '', '/thank-you');
+          window.dispatchEvent(new PopStateEvent('popstate'));
+        } else {
+          throw new Error('Submission failed');
+        }
+      })
+      .catch((err) => {
+        console.error('Form submit error', err);
+        setStatus('Failed to submit the form. Please try again.');
         setIsLoading(false);
-    }, 1000);
+      });
   };
   
   return (
@@ -73,7 +100,18 @@ const Contact: React.FC<SectionProps> = ({ sectionRef }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             
             {/* Left Column: Form */}
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form ref={formRef} onSubmit={handleSubmit} action="https://formsubmit.co/devhubbardoli@gmail.com" method="POST" className="space-y-4">
+              {/* FormSubmit hidden inputs: redirect to /thank-you, subject, disable captcha, and a honeypot to reduce spam */}
+              <input type="text" name="_honey" style={{ display: 'none' }} />
+              <input type="hidden" name="_subject" value="New message from DevHub website" />
+              <input type="hidden" name="_captcha" value="false" />
+              {/* Reply-To so you can directly reply from your inbox */}
+              <input type="hidden" name="_replyto" value={formData.email} />
+              {/* Use a nicer email template on FormSubmit's side */}
+              <input type="hidden" name="_template" value="table" />
+              {/* Redirect back to the site's thank-you page after successful submit */}
+              <input type="hidden" name="_next" value={typeof window !== 'undefined' ? window.location.origin + '/thank-you' : '/thank-you'} />
+              {/* Note: on first submission FormSubmit will send a confirmation to the recipient email — follow that flow to enable deliveries. */}
               <FloatingLabelInput type="text" name="name" label="Name" value={formData.name} onChange={handleChange} required />
               <FloatingLabelInput type="email" name="email" label="Email" value={formData.email} onChange={handleChange} required />
               
