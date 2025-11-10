@@ -16,7 +16,7 @@ export const PROJECTS: Project[] = [
       "An interactive platform for managing online courses, tracking student progress, and providing educators with real-time insights.",
     techStack: ["Next.js", "Tailwind CSS", "TypeScript", "Supabase"],
     githubUrl: "https://github.com/kshit7897",
-    liveUrl: "https://edutrack-three-sigma.vercel.app/",
+    liveUrl: "https://edutrackweb.vercel.app/",
     imageUrl:
       "https://images.unsplash.com/photo-1584697964154-1c1b1e4c6b29?q=80&w=1200&auto=format&fit=crop",
   },
@@ -26,7 +26,7 @@ export const PROJECTS: Project[] = [
       "A fully functional e-commerce website featuring product listings, cart, checkout, and order management with a responsive design.",
     techStack: ["React", "TypeScript", "Tailwind CSS", "Redux Toolkit"],
     githubUrl: "https://github.com/kshit7897",
-    liveUrl: "https://shop-zone-sable.vercel.app/",
+    liveUrl: "https://shopzoneweb.vercel.app/",
     imageUrl:
       "https://images.unsplash.com/photo-1522199755839-a2bacb67c546?q=80&w=1200&auto=format&fit=crop",
   },
@@ -36,7 +36,7 @@ export const PROJECTS: Project[] = [
       "A Kanban-style productivity app for creating, organizing, and tracking daily tasks, built for smooth performance and clean UI.",
     techStack: ["React", "Vite", "Zustand", "Appwrite"],
     githubUrl: "https://github.com/kshit7897",
-    liveUrl: "https://mindspace-pearl.vercel.app/",
+    liveUrl: "https://mindspaceweb.vercel.app/",
     imageUrl:
       "https://images.unsplash.com/photo-1547480053-7d174f67b557?q=80&w=1200&auto=format&fit=crop",
   },
@@ -46,7 +46,7 @@ export const PROJECTS: Project[] = [
       "A movie discovery and rating website that lets users explore trending films, read details, and view trailers in a sleek UI.",
     techStack: ["Next.js", "TMDB API", "Tailwind CSS", "TypeScript"],
     githubUrl: "https://github.com/kshit7897",
-    liveUrl: "https://cinesite-chi.vercel.app/",
+    liveUrl: "https://cinesiteweb.vercel.app/",
     imageUrl:
       "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1200&auto=format&fit=crop",
   },
