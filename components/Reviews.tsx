@@ -27,7 +27,7 @@ const Reviews: React.FC<SectionProps> = ({ sectionRef }) => {
   };
   
   const startAutoScroll = useCallback(() => {
-    intervalRef.current = setInterval(() => {
+    intervalRef.current = window.setInterval(() => {
       if (sliderRef.current) {
         // If scrolled to the end, snap back to the start
         if (sliderRef.current.scrollLeft + sliderRef.current.clientWidth >= sliderRef.current.scrollWidth) {
