@@ -24,7 +24,6 @@ const Contact: React.FC<SectionProps> = ({ sectionRef }) => {
   });
   const [status, setStatus] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const formRef = React.useRef<HTMLFormElement | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -44,36 +43,36 @@ const Contact: React.FC<SectionProps> = ({ sectionRef }) => {
       return;
     }
 
-    // Submit the form via FormSubmit's AJAX endpoint to avoid a full-page reload.
-    // This lets us stay in the SPA and navigate client-side to /thank-you.
-    const endpoint = 'https://formsubmit.co/ajax/devhubbardoli@gmail.com';
+    // Use Web3Forms AJAX API to send the email from the client.
+    // Provided access key (client-side key): 4def2cf9-2d68-488c-8897-c405f5dad09d
+    const endpoint = 'https://api.web3forms.com/submit';
 
-    const fd = new FormData();
-    fd.append('name', formData.name);
-    fd.append('email', formData.email);
-    fd.append('projectType', formData.projectType);
-    fd.append('message', formData.message);
-    fd.append('_subject', 'New message from DevHub website');
-    fd.append('_replyto', formData.email);
-    fd.append('_template', 'table');
-    fd.append('_captcha', 'false');
-    fd.append('_honey', '');
+    const payload = {
+      access_key: '4def2cf9-2d68-488c-8897-c405f5dad09d',
+      subject: 'New message from DevHub website',
+      name: formData.name,
+      email: formData.email,
+      projectType: formData.projectType,
+      message: formData.message,
+      // turn off captcha if not in use
+      captcha: false,
+    } as Record<string, unknown>;
 
     fetch(endpoint, {
       method: 'POST',
       headers: {
+        'Content-Type': 'application/json',
         Accept: 'application/json',
       },
-      body: fd,
+      body: JSON.stringify(payload),
     })
       .then(async (res) => {
         if (!res.ok) throw new Error('Network response was not ok');
         const json = await res.json();
-        if (json && json.success) {
-          // Clear form and navigate client-side to /thank-you without reload
+        // Web3Forms returns {success: true} on success
+        if (json && (json.success === true || json.success === 'true')) {
           setFormData({ name: '', email: '', projectType: 'Websites & Landing Pages', message: '' });
           setIsLoading(false);
-          // push state and trigger popstate so App updates
           window.history.pushState({}, '', '/thank-you');
           window.dispatchEvent(new PopStateEvent('popstate'));
         } else {
@@ -81,8 +80,9 @@ const Contact: React.FC<SectionProps> = ({ sectionRef }) => {
         }
       })
       .catch((err) => {
-        console.error('Form submit error', err);
-        setStatus('Failed to submit the form. Please try again.');
+        console.error('Web3Forms submit error', err);
+        // Show an error to the user; do not fallback to native FormSubmit anymore.
+        setStatus('Failed to submit the form. Please try again later or email devhubbardoli@gmail.com');
         setIsLoading(false);
       });
   };
@@ -93,63 +93,52 @@ const Contact: React.FC<SectionProps> = ({ sectionRef }) => {
         <h2 className="text-3xl md:text-4xl font-bold text-center text-light-slate mb-4">
           Get In Touch
         </h2>
-  <div className="w-20 h-1 bg-neon-blue mx-auto mb-6 rounded"></div>
-  <p className="text-center text-slate max-w-2xl mx-auto mb-8">Tell me about your website, web app, or MVP — I’ll reply with a quote and next steps for businesses, startups, and students.</p>
+        <div className="w-20 h-1 bg-neon-blue mx-auto mb-6 rounded"></div>
+        <p className="text-center text-slate max-w-2xl mx-auto mb-8">Tell me about your website, web app, or MVP — I’ll reply with a quote and next steps for businesses, startups, and students.</p>
         
         <div className="max-w-4xl mx-auto bg-dark-navy/30 rounded-lg shadow-lg p-8 md:p-12 border border-dark-slate">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             
-            {/* Left Column: Form */}
-            <form ref={formRef} onSubmit={handleSubmit} action="https://formsubmit.co/devhubbardoli@gmail.com" method="POST" className="space-y-4">
-              {/* FormSubmit hidden inputs: redirect to /thank-you, subject, disable captcha, and a honeypot to reduce spam */}
-              <input type="text" name="_honey" style={{ display: 'none' }} />
-              <input type="hidden" name="_subject" value="New message from DevHub website" />
-              <input type="hidden" name="_captcha" value="false" />
-              {/* Reply-To so you can directly reply from your inbox */}
-              <input type="hidden" name="_replyto" value={formData.email} />
-              {/* Use a nicer email template on FormSubmit's side */}
-              <input type="hidden" name="_template" value="table" />
-              {/* Redirect back to the site's thank-you page after successful submit */}
-              <input type="hidden" name="_next" value={typeof window !== 'undefined' ? window.location.origin + '/thank-you' : '/thank-you'} />
-              {/* Note: on first submission FormSubmit will send a confirmation to the recipient email — follow that flow to enable deliveries. */}
-              <FloatingLabelInput type="text" name="name" label="Name" value={formData.name} onChange={handleChange} required />
-              <FloatingLabelInput type="email" name="email" label="Email" value={formData.email} onChange={handleChange} required />
-              
-              <div className="relative z-0 w-full mb-8 group">
-                <label htmlFor="projectType" className="text-sm text-slate">Service</label>
-                <select name="projectType" id="projectType" value={formData.projectType} onChange={handleChange} className="w-full mt-1 bg-dark-slate border border-slate/50 text-light-slate rounded-md p-3 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-navy focus:ring-neon-blue">
-                  <option>Websites & Landing Pages</option>
-                  <option>Web Apps & Dashboards</option>
-                  <option>Startup MVP</option>
-                  <option>Documentation & Support</option>
-                  <option>Other</option>
-                </select>
-              </div>
+              {/* Left Column: Form */}
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <FloatingLabelInput type="text" name="name" label="Name" value={formData.name} onChange={handleChange} required />
+                <FloatingLabelInput type="email" name="email" label="Email" value={formData.email} onChange={handleChange} required />
+                
+                <div className="relative z-0 w-full mb-8 group">
+                  <label htmlFor="projectType" className="text-sm text-slate">Service</label>
+                  <select name="projectType" id="projectType" value={formData.projectType} onChange={handleChange} className="w-full mt-1 bg-dark-slate border border-slate/50 text-light-slate rounded-md p-3 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-navy focus:ring-neon-blue">
+                    <option>Websites & Landing Pages</option>
+                    <option>Web Apps & Dashboards</option>
+                    <option>Startup MVP</option>
+                    <option>Documentation & Support</option>
+                    <option>Other</option>
+                  </select>
+                </div>
 
-              <div className="relative z-0 w-full mb-5 group">
-                <textarea name="message" id="message" rows={4} value={formData.message} onChange={handleChange} required className="block py-2.5 px-0 w-full text-sm text-light-slate bg-transparent border-0 border-b-2 border-dark-slate appearance-none focus:outline-none focus:ring-0 focus:border-neon-blue peer" placeholder=" "></textarea>
-                <label htmlFor="message" className="peer-focus:font-medium absolute text-sm text-slate duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-neon-blue peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                  Message <span className="text-syntax-pink">*</span>
-                </label>
-              </div>
+                <div className="relative z-0 w-full mb-5 group">
+                  <textarea name="message" id="message" rows={4} value={formData.message} onChange={handleChange} required className="block py-2.5 px-0 w-full text-sm text-light-slate bg-transparent border-0 border-b-2 border-dark-slate appearance-none focus:outline-none focus:ring-0 focus:border-neon-blue peer" placeholder=" "></textarea>
+                  <label htmlFor="message" className="peer-focus:font-medium absolute text-sm text-slate duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-neon-blue peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                    Message <span className="text-syntax-pink">*</span>
+                  </label>
+                </div>
 
-              <div className="text-left pt-2">
-                <button type="submit" disabled={isLoading} className="inline-flex items-center gap-2 px-8 py-3 bg-neon-blue text-dark-navy font-semibold rounded-lg shadow-lg shadow-neon-blue/20 hover:bg-opacity-80 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed">
-                  {isLoading ? (
-                    <>
-                      <SpinnerIcon className="w-5 h-5" />
-                      Preparing...
-                    </>
-                  ) : (
-                    <>
-                      <PaperAirplaneIcon className="w-5 h-5" />
-                      Request Quote
-                    </>
-                  )}
-                </button>
-              </div>
-              {status && <p className={`text-left mt-4 text-sm ${status.includes('Failed') ? 'text-syntax-pink' : 'text-neon-blue'}`}>{status}</p>}
-            </form>
+                <div className="text-left pt-2">
+                  <button type="submit" disabled={isLoading} className="inline-flex items-center gap-2 px-8 py-3 bg-neon-blue text-dark-navy font-semibold rounded-lg shadow-lg shadow-neon-blue/20 hover:bg-opacity-80 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed">
+                    {isLoading ? (
+                      <>
+                        <SpinnerIcon className="w-5 h-5" />
+                        Preparing...
+                      </>
+                    ) : (
+                      <>
+                        <PaperAirplaneIcon className="w-5 h-5" />
+                        Request Quote
+                      </>
+                    )}
+                  </button>
+                </div>
+                {status && <p className={`text-left mt-4 text-sm ${status.includes('Failed') ? 'text-syntax-pink' : 'text-neon-blue'}`}>{status}</p>}
+              </form>
 
             {/* Right Column: Contact Info */}
             <div className="flex flex-col justify-center">
