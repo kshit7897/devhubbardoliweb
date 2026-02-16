@@ -71,7 +71,16 @@ const Hero: React.FC<SectionProps> = ({ sectionRef }) => {
             Available for New Projects
           </span>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-light-slate leading-tight mb-6">
-            Build. Code. Launch <br /> with <Typewriter words={wordsToAnimate} />
+            Build. Code. Launch with{' '}
+            <span className="relative inline-flex flex-col h-[1.2em] sm:h-auto align-top">
+              {/* Invisible Placeholder to reserve maximum width/height */}
+              <span className="invisible opacity-0 select-none text-center lg:text-left">Custom Web Development</span>
+
+              {/* Actual Animated Text Overlay with alignment fix */}
+              <span className="absolute top-0 left-0 w-full h-full flex justify-center lg:justify-start">
+                <Typewriter words={wordsToAnimate} />
+              </span>
+            </span>
           </h1>
           <p className="text-lg text-slate max-w-2xl mx-auto lg:mx-0 mb-8 leading-relaxed">
             We build professional websites, custom web apps, and data dashboards for businesses in Bardoli and beyond.
