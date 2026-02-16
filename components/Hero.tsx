@@ -70,7 +70,7 @@ const Hero: React.FC<SectionProps> = ({ sectionRef }) => {
           <span className="inline-block py-1 px-3 rounded-full bg-blue-50 border border-blue-100 text-neon-blue text-sm font-semibold mb-6">
             Available for New Projects
           </span>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-light-slate leading-tight mb-6">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-light-slate leading-tight mb-10">
             Build. Code. Launch with{' '}
             <span className="relative inline-flex flex-col h-[1.2em] sm:h-auto align-top">
               {/* Invisible Placeholder to reserve maximum width/height */}

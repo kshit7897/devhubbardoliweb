@@ -10,6 +10,7 @@ import Contact from './components/Contact';
 import ThankYou from './components/ThankYou';
 import Footer from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
+import TawkTo from './components/TawkTo';
 import FAQ from './components/FAQ';
 import Stats from './components/Stats';
 import TechMarquee from './components/TechMarquee';
@@ -134,7 +135,8 @@ const App: React.FC = () => {
         <FAQ />
         <Contact sectionRef={sectionRefs.contact} />
       </main>
-      <FloatingWhatsApp />
+      {/* <FloatingWhatsApp /> */}
+      <TawkTo />
       <Footer />
     </div>
   );
