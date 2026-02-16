@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="BZlZnfbWbJBEKLPifRynM4ukhFA4Uc3-ffpYB-VjtTg" />
   <title>DevHub Bardoli — Web & Software Development for Small & Local Businesses</title>
-  <meta name="description" content="DevHub Bardoli delivers modern websites, web apps and dashboards for small and local businesses. Services: web & software development, e-commerce, dashboards, integrations, and production deployment support." />
-  <meta name="keywords" content="web development, business website, small business web development, software development, project ideas, website projects, app projects, DevHub Bardoli, React, Next.js, deployment support" />
+  <meta name="description"
+    content="DevHub Bardoli delivers modern websites, web apps and dashboards for small and local businesses. Services: web & software development, e-commerce, dashboards, integrations, and production deployment support." />
+  <meta name="keywords"
+    content="web development, business website, small business web development, software development, project ideas, website projects, app projects, DevHub Bardoli, React, Next.js, deployment support" />
   <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <meta name="author" content="Parikshit Chauhan — DevHub Bardoli" />
   <meta name="robots" content="index, follow" />
@@ -14,7 +17,8 @@
 
   <!-- Open Graph / Facebook -->
   <meta property="og:title" content="DevHub Bardoli — Web & Software Development for Small & Local Businesses" />
-  <meta property="og:description" content="We build websites, web apps and dashboards for small businesses — e-commerce, admin dashboards, integrations, and deployment support. Located in Bardoli, Gujarat." />
+  <meta property="og:description"
+    content="We build websites, web apps and dashboards for small businesses — e-commerce, admin dashboards, integrations, and deployment support. Located in Bardoli, Gujarat." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://devhubbardoli.vercel.app/" />
   <meta property="og:image" content="https://devhubbardoli.vercel.app/assets/images/og-image.svg" />
@@ -27,18 +31,19 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="DevHub Bardoli — Web & Software Development for Small & Local Businesses" />
-  <meta name="twitter:description" content="Modern websites, web apps and dashboards for small businesses — e-commerce, dashboards, integrations, and deployment support from Bardoli." />
+  <meta name="twitter:description"
+    content="Modern websites, web apps and dashboards for small businesses — e-commerce, dashboards, integrations, and deployment support from Bardoli." />
   <meta name="twitter:image" content="https://devhubbardoli.vercel.app/assets/images/og-image.svg" />
 
   <!-- Misc -->
-  <meta name="theme-color" content="#0A192F" />
-    <!-- Favicons (placed in /public/) -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="manifest" href="/site.webmanifest">
-    <meta name="msapplication-TileColor" content="#0A192F" />
+  <meta name="theme-color" content="#ffffff" />
+  <!-- Favicons (placed in /public/) -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="msapplication-TileColor" content="#0A192F" />
   <!-- Hreflang hints (same page, language variants can be added when available) -->
   <link rel="alternate" href="https://devhubbardoli.vercel.app/" hreflang="en" />
   <link rel="alternate" href="https://devhubbardoli.vercel.app/" hreflang="hi" />
@@ -51,14 +56,14 @@
       theme: {
         extend: {
           colors: {
-            'dark-navy': '#0A192F',
-            'dark-space': '#020c1b',
-            'light-slate': '#ccd6f6',
-            'slate': '#8892b0',
-            'dark-slate': '#495670',
-            'neon-blue': '#38BDF8',
-            'syntax-orange': '#F78166',
-            'syntax-pink': '#FF79C6',
+            'dark-navy': '#ffffff', // Apps Background (White)
+            'dark-space': '#f8fafc', // Section Background (Slate-50)
+            'light-slate': '#1e293b', // Primary Text (Slate-800)
+            'slate': '#475569', // Secondary Text (Slate-600)
+            'dark-slate': '#cbd5e1', // Borders (Slate-300)
+            'neon-blue': '#2563eb', // Primary Brand (Royal Blue)
+            'cyan-accent': '#0891b2', // Secondary (Cyan-600)
+            'pink-accent': '#db2777', // Accent (Pink-600)
           },
           fontFamily: {
             poppins: ['Poppins', 'sans-serif'],
@@ -127,10 +132,30 @@
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: #0A192F; /* Fallback background for a smoother load */
+      background-color: #ffffff;
+      /* Fallback background for a smoother load */
+    }
+
+    @keyframes marquee {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-33.333%);
+      }
+    }
+
+    .animate-marquee {
+      animation: marquee 60s linear infinite;
+    }
+
+    .animate-marquee:hover {
+      animation-play-state: paused;
     }
   </style>
 </head>
+
 <body>
   <div id="root"></div>
 
@@ -145,4 +170,5 @@
   </script>
   <script type="module" src="/index.tsx"></script>
 </body>
+
 </html>

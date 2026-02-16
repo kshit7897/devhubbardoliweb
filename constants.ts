@@ -2,9 +2,9 @@ import type { NavLink, Project, Review } from "./types";
 
 export const NAV_LINKS: NavLink[] = [
   { id: "home", title: "Home" },
-  { id: "about", title: "About" },
   { id: "services", title: "Services" },
   { id: "projects", title: "Projects" },
+  { id: "about", title: "About" },
   { id: "reviews", title: "Reviews" },
   { id: "contact", title: "Contact" },
 ];
@@ -18,7 +18,7 @@ export const PROJECTS: Project[] = [
     githubUrl: "https://github.com/kshit7897",
     liveUrl: "https://edutrackweb.vercel.app/",
     imageUrl:
-      "https://images.unsplash.com/photo-1584697964154-1c1b1e4c6b29?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80&w=1200&auto=format&fit=crop",
   },
   {
     title: "ShopZone - E-Commerce Platform",
@@ -48,39 +48,39 @@ export const PROJECTS: Project[] = [
     githubUrl: "https://github.com/kshit7897",
     liveUrl: "https://cinesiteweb.vercel.app/",
     imageUrl:
-      "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1200&auto=format&fit=crop",
   },
 ];
 
 export const REVIEWS: Review[] = [
   {
-    name: "Amit Patel",
-    source: "BCA Student, Bardoli",
+    name: "Raj Hardware & Tools",
+    source: "Business Owner, Bardoli",
     quote:
-      "My final year project turned out amazing. Parikshit bhai's guidance was excellent and I learned a lot about professional coding.",
+      "We needed a simple inventory system for our hardware shop. Parikshit bhai understood our requirement perfectly and built a system that is very easy to use. Now we track stock on our mobile.",
   },
   {
-    name: "Nita Sharma",
-    source: "Business Owner, Surat",
+    name: "Priya Patel",
+    source: "MCA Student, Surat",
     quote:
-      "I got a fantastic website for my business. The design is modern and very professional. Fully satisfied with their work!",
+      "I was struggling with my Final Year Project on React & Node.js. The guidance here is the best. Not just the code, but I learned how to deploy and present it. Got an O grade!",
   },
   {
-    name: "Ravi Singh",
+    name: "GreenLeaf Nursery",
+    source: "Local Business, Kamrej",
+    quote:
+      "Our nursery website looks lively and professional. Customers can now see our plants online and contact us directly on WhatsApp. Business has increased in the last 3 months.",
+  },
+  {
+    name: "Rahul Mistry",
     source: "Engineering Student, Bardoli",
     quote:
-      "I was stuck with my college project. His mentorship was a game-changer. The final project was perfect and I scored an A+!",
+      "For my college project, I wanted something unique. We built an AI-based attendance system. The logic and explanation given were so clear that my external viva went very smooth.",
   },
   {
-    name: "Isha Desai",
-    source: "Diploma Student, Surat",
+    name: "Dr. Anjali Desai",
+    source: "Clinic Owner, Bardoli",
     quote:
-      "The best part was how they understood my idea. Project was delivered on time. Very happy with the support.",
-  },
-  {
-    name: "Ankit Mehta",
-    source: "MCA Final Year, Bardoli",
-    quote:
-      "My full-stack project was very complex, but they handled it expertly. The code quality is top-class. Highly professional.",
+      "Professional and timely service. They set up my clinic's appointment booking page and it works flawlessly. Highly recommended for any doctor wanting a digital presence.",
   },
 ];

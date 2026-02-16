@@ -86,59 +86,59 @@ const Contact: React.FC<SectionProps> = ({ sectionRef }) => {
         setIsLoading(false);
       });
   };
-  
+
   return (
-    <section id="contact" ref={sectionRef} className="py-20 md:py-32 bg-transparent">
+    <section id="contact" ref={sectionRef} className="py-12 md:py-20 bg-transparent">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-light-slate mb-4">
           Get In Touch
         </h2>
         <div className="w-20 h-1 bg-neon-blue mx-auto mb-6 rounded"></div>
         <p className="text-center text-slate max-w-2xl mx-auto mb-8">Tell me about your website, web app, or MVP — I’ll reply with a quote and next steps for businesses, startups, and students.</p>
-        
+
         <div className="max-w-4xl mx-auto bg-dark-navy/30 rounded-lg shadow-lg p-8 md:p-12 border border-dark-slate">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            
-              {/* Left Column: Form */}
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <FloatingLabelInput type="text" name="name" label="Name" value={formData.name} onChange={handleChange} required />
-                <FloatingLabelInput type="email" name="email" label="Email" value={formData.email} onChange={handleChange} required />
-                
-                <div className="relative z-0 w-full mb-8 group">
-                  <label htmlFor="projectType" className="text-sm text-slate">Service</label>
-                  <select name="projectType" id="projectType" value={formData.projectType} onChange={handleChange} className="w-full mt-1 bg-dark-slate border border-slate/50 text-light-slate rounded-md p-3 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-navy focus:ring-neon-blue">
-                    <option>Websites & Landing Pages</option>
-                    <option>Web Apps & Dashboards</option>
-                    <option>Startup MVP</option>
-                    <option>Documentation & Support</option>
-                    <option>Other</option>
-                  </select>
-                </div>
 
-                <div className="relative z-0 w-full mb-5 group">
-                  <textarea name="message" id="message" rows={4} value={formData.message} onChange={handleChange} required className="block py-2.5 px-0 w-full text-sm text-light-slate bg-transparent border-0 border-b-2 border-dark-slate appearance-none focus:outline-none focus:ring-0 focus:border-neon-blue peer" placeholder=" "></textarea>
-                  <label htmlFor="message" className="peer-focus:font-medium absolute text-sm text-slate duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-neon-blue peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                    Message <span className="text-syntax-pink">*</span>
-                  </label>
-                </div>
+            {/* Left Column: Form */}
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <FloatingLabelInput type="text" name="name" label="Name" value={formData.name} onChange={handleChange} required />
+              <FloatingLabelInput type="email" name="email" label="Email" value={formData.email} onChange={handleChange} required />
 
-                <div className="text-left pt-2">
-                  <button type="submit" disabled={isLoading} className="inline-flex items-center gap-2 px-8 py-3 bg-neon-blue text-dark-navy font-semibold rounded-lg shadow-lg shadow-neon-blue/20 hover:bg-opacity-80 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed">
-                    {isLoading ? (
-                      <>
-                        <SpinnerIcon className="w-5 h-5" />
-                        Preparing...
-                      </>
-                    ) : (
-                      <>
-                        <PaperAirplaneIcon className="w-5 h-5" />
-                        Request Quote
-                      </>
-                    )}
-                  </button>
-                </div>
-                {status && <p className={`text-left mt-4 text-sm ${status.includes('Failed') ? 'text-syntax-pink' : 'text-neon-blue'}`}>{status}</p>}
-              </form>
+              <div className="relative z-0 w-full mb-8 group">
+                <label htmlFor="projectType" className="text-sm text-slate">Service</label>
+                <select name="projectType" id="projectType" value={formData.projectType} onChange={handleChange} className="w-full mt-1 bg-dark-slate border border-slate/50 text-light-slate rounded-md p-3 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-navy focus:ring-neon-blue">
+                  <option>Websites & Landing Pages</option>
+                  <option>Web Apps & Dashboards</option>
+                  <option>Startup MVP</option>
+                  <option>Documentation & Support</option>
+                  <option>Other</option>
+                </select>
+              </div>
+
+              <div className="relative z-0 w-full mb-5 group">
+                <textarea name="message" id="message" rows={4} value={formData.message} onChange={handleChange} required className="block py-2.5 px-0 w-full text-sm text-light-slate bg-transparent border-0 border-b-2 border-dark-slate appearance-none focus:outline-none focus:ring-0 focus:border-neon-blue peer" placeholder=" "></textarea>
+                <label htmlFor="message" className="peer-focus:font-medium absolute text-sm text-slate duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-neon-blue peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                  Message <span className="text-syntax-pink">*</span>
+                </label>
+              </div>
+
+              <div className="text-left pt-2">
+                <button type="submit" disabled={isLoading} className="inline-flex items-center gap-2 px-8 py-3 bg-neon-blue text-dark-navy font-semibold rounded-lg shadow-lg shadow-neon-blue/20 hover:bg-opacity-80 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed">
+                  {isLoading ? (
+                    <>
+                      <SpinnerIcon className="w-5 h-5" />
+                      Preparing...
+                    </>
+                  ) : (
+                    <>
+                      <PaperAirplaneIcon className="w-5 h-5" />
+                      Request Quote
+                    </>
+                  )}
+                </button>
+              </div>
+              {status && <p className={`text-left mt-4 text-sm ${status.includes('Failed') ? 'text-syntax-pink' : 'text-neon-blue'}`}>{status}</p>}
+            </form>
 
             {/* Right Column: Contact Info */}
             <div className="flex flex-col justify-center">

@@ -10,11 +10,14 @@ import Contact from './components/Contact';
 import ThankYou from './components/ThankYou';
 import Footer from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
+import FAQ from './components/FAQ';
+import Stats from './components/Stats';
+import TechMarquee from './components/TechMarquee';
 import { NAV_LINKS } from './constants';
 
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState<string>('home');
-  
+
   const sectionRefs = useMemo(
     () =>
       NAV_LINKS.reduce<{ [key: string]: React.RefObject<HTMLElement> }>(
@@ -74,12 +77,12 @@ const App: React.FC = () => {
           if (sectionIds.includes(targetId)) {
             e.preventDefault();
             const targetElement = document.getElementById(targetId);
-            
+
             if (targetElement) {
               const headerOffset = 64; // h-16 in Tailwind = 4rem = 64px
               const elementPosition = targetElement.getBoundingClientRect().top;
               const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-        
+
               window.scrollTo({
                 top: offsetPosition,
                 behavior: 'smooth'
@@ -122,10 +125,13 @@ const App: React.FC = () => {
       <Header activeSection={activeSection} />
       <main className="flex-grow relative z-10">
         <Hero sectionRef={sectionRefs.home} />
-        <About sectionRef={sectionRefs.about} />
+        <TechMarquee />
         <Services sectionRef={sectionRefs.services} />
         <Projects sectionRef={sectionRefs.projects} />
+        <Stats />
+        <About sectionRef={sectionRefs.about} />
         <Reviews sectionRef={sectionRefs.reviews} />
+        <FAQ />
         <Contact sectionRef={sectionRefs.contact} />
       </main>
       <FloatingWhatsApp />
